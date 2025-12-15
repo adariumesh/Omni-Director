@@ -56,7 +56,7 @@ class FIBOClient:
     
     def __init__(self, api_key: str):
         self.api_key = api_key
-        self.base_url = "https://engine.prod.bria-api.com/v1"
+        self.base_url = "https://engine.prod.bria-api.com"
         
     def generate_image(self, prompt: str, seed: Optional[int] = None) -> FIBOResult:
         """Generate single image via FIBO API"""
@@ -64,40 +64,47 @@ class FIBOClient:
             seed = random.randint(1000, 9999)
             
         payload = {
-            "prompt": prompt,
+            "prompt": prompt.strip(),
             "seed": seed,
             "num_results": 1,
-            "aspect_ratio": "1:1"
+            "aspect_ratio": "1:1",
+            "sync": True
         }
         
         headers = {
-            "Authorization": f"Bearer {self.api_key}",
+            "api_token": self.api_key,
             "Content-Type": "application/json"
         }
         
         try:
             response = requests.post(
-                f"{self.base_url}/text_to_image", 
+                f"{self.base_url}/text-to-image/base/2.3", 
                 headers=headers,
                 json=payload,
-                timeout=30
+                timeout=60
             )
             
             if response.status_code != 200:
-                raise Exception(f"API Error {response.status_code}: {response.text}")
+                try:
+                    error_data = response.json()
+                    error_message = error_data.get("message", str(error_data))
+                except:
+                    error_message = response.text
+                raise Exception(f"API Error {response.status_code}: {error_message}")
                 
             result = response.json()
             
-            if 'result' in result and len(result['result']) > 0:
-                image_data = result['result'][0]
+            # Parse Bria FIBO response format
+            if 'results' in result and len(result['results']) > 0:
+                image_data = result['results'][0]
                 return FIBOResult(
-                    url=image_data['urls'][0],
+                    url=image_data['url'],
                     seed=seed,
                     prompt=prompt,
                     created_at=datetime.now()
                 )
             else:
-                raise Exception("No images generated")
+                raise Exception("No images generated in response")
                 
         except Exception as e:
             st.error(f"FIBO API Error: {str(e)}")
