@@ -56,7 +56,7 @@ class FIBOClient:
     
     def __init__(self, api_key: str):
         self.api_key = api_key
-        self.base_url = "https://engine.prod.bria-api.com"
+        self.base_url = "https://engine.prod.bria-api.com/v1"
         
     def generate_image(self, prompt: str, seed: Optional[int] = None) -> FIBOResult:
         """Generate single image via FIBO API"""
@@ -94,15 +94,19 @@ class FIBOClient:
                 
             result = response.json()
             
-            # Parse Bria FIBO response format
-            if 'results' in result and len(result['results']) > 0:
-                image_data = result['results'][0]
-                return FIBOResult(
-                    url=image_data['url'],
-                    seed=seed,
-                    prompt=prompt,
-                    created_at=datetime.now()
-                )
+            # Parse Bria FIBO response format (matches backend)
+            if 'result' in result and len(result['result']) > 0:
+                image_data = result['result'][0]
+                urls = image_data.get('urls', [])
+                if urls:
+                    return FIBOResult(
+                        url=urls[0],
+                        seed=image_data.get('seed', seed),
+                        prompt=prompt,
+                        created_at=datetime.now()
+                    )
+                else:
+                    raise Exception("No URLs in response")
             else:
                 raise Exception("No images generated in response")
                 
