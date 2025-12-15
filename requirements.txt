@@ -1,8 +1,2 @@
-# FIBO Omni-Director Pro - Streamlit Cloud Requirements
-# Self-contained app with direct API integration
-
-# Core Streamlit
 streamlit==1.28.0
-
-# HTTP Client for FIBO API
 requests==2.31.0
