@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{portfolio_title}}</title>
+    <meta name="description" content="{{portfolio_description}}">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
+    {{custom_css}}
+    {{analytics_code}}
+</head>
+<body class="theme-minimal">
+    <!-- Header -->
+    <header class="minimal-header">
+        <div class="container">
+            <nav class="header-nav">
+                {{logo_html}}
+                <ul class="nav-list">
+                    <li><a href="#work" class="nav-item">Work</a></li>
+                    <li><a href="#info" class="nav-item">Info</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-content">
+                <h1 class="site-title">{{portfolio_title}}</h1>
+                <p class="site-description">{{portfolio_description}}</p>
+                
+                <div class="header-meta">
+                    <span class="meta-item">{{asset_count}} pieces</span>
+                    <span class="meta-divider">•</span>
+                    <span class="meta-item">{{creation_date}}</span>
+                    <span class="meta-divider">•</span>
+                    <span class="meta-item">{{portfolio_theme}}</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Work Section -->
+    <main class="work-section" id="work">
+        <div class="container">
+            <!-- Filters -->
+            {{filter_controls}}
+
+            <!-- Gallery -->
+            <div class="minimal-gallery {{layout_class}}">
+                {{asset_cards}}
+            </div>
+        </div>
+    </main>
+
+    <!-- Info Section -->
+    <section class="info-section" id="info">
+        <div class="container">
+            <div class="info-grid">
+                <div class="info-content">
+                    <h2 class="info-title">About</h2>
+                    <div class="info-text">
+                        <p>{{portfolio_description}}</p>
+                        
+                        <p>This collection represents {{asset_count}} AI-generated images created using FIBO Omni-Director Pro. Each piece is the result of careful prompt engineering, parameter optimization, and curatorial selection.</p>
+                        
+                        <p>The minimal presentation allows the work to speak for itself, emphasizing clarity, composition, and artistic merit without distraction.</p>
+                    </div>
+                </div>
+                
+                <div class="info-details">
+                    <h3>Details</h3>
+                    <dl class="details-list">
+                        <dt>Collection:</dt>
+                        <dd>{{portfolio_title}}</dd>
+                        
+                        <dt>Pieces:</dt>
+                        <dd>{{asset_count}}</dd>
+                        
+                        <dt>Created:</dt>
+                        <dd>{{creation_date}}</dd>
+                        
+                        <dt>Platform:</dt>
+                        <dd>FIBO Omni-Director Pro</dd>
+                        
+                        <dt>Format:</dt>
+                        <dd>Digital Portfolio</dd>
+                        
+                        <dt>Export:</dt>
+                        <dd><a href="portfolio.json" download>Download metadata</a></dd>
+                    </dl>
+                    
+                    <div class="colophon">
+                        <h4>Colophon</h4>
+                        <p>Typography: IBM Plex Sans, IBM Plex Mono</p>
+                        <p>Generated: {{generation_timestamp}}</p>
+                        <p>{{footer_text}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    {{lightbox_html}}
+
+    <!-- Footer -->
+    <footer class="minimal-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-text">{{portfolio_title}} — {{footer_text}}</p>
+                <p class="footer-credit">Generated with FIBO Omni-Director Pro</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+    
+    <script>
+        // Minimal theme configuration
+        window.portfolioConfig = {
+            title: "{{portfolio_title}}",
+            assetCount: {{asset_count}},
+            theme: "minimal",
+            layout: "{{layout_style}}",
+            enableLightbox: {{enable_lightbox}},
+            enableSearch: {{enable_search}},
+            enableFilters: {{enable_filters}}
+        };
+
+        // Minimal theme specific behavior
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add minimal interaction enhancements
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.opacity = '0.6';
+                });
+                item.addEventListener('mouseleave', function() {
+                    this.style.opacity = '1';
+                });
+            });
+
+            // Simple scroll indicator
+            let ticking = false;
+            function updateScrollProgress() {
+                const scrollTop = window.pageYOffset;
+                const docHeight = document.body.scrollHeight;
+                const winHeight = window.innerHeight;
+                const scrollPercent = scrollTop / (docHeight - winHeight);
+                
+                document.documentElement.style.setProperty('--scroll-progress', scrollPercent);
+                ticking = false;
+            }
+
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    requestAnimationFrame(updateScrollProgress);
+                    ticking = true;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

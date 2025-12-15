@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{portfolio_title}} - Professional Portfolio</title>
+    <meta name="description" content="{{portfolio_description}}">
+    <meta name="author" content="FIBO Omni-Director Pro">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    {{custom_css}}
+    {{analytics_code}}
+</head>
+<body class="theme-professional">
+    <!-- Header Section -->
+    <header class="portfolio-header">
+        <div class="container">
+            {{logo_html}}
+            <h1 class="portfolio-title">{{portfolio_title}}</h1>
+            <p class="portfolio-subtitle">{{portfolio_subtitle}}</p>
+            <div class="portfolio-description">
+                <p>{{portfolio_description}}</p>
+            </div>
+            <div class="header-stats">
+                <div class="stat-card">
+                    <span class="stat-number">{{asset_count}}</span>
+                    <span class="stat-label">Generated Assets</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">{{creation_date}}</span>
+                    <span class="stat-label">Collection Date</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">{{portfolio_theme}}</span>
+                    <span class="stat-label">Theme</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="portfolio-nav">
+        <div class="container">
+            <ul class="nav-menu">
+                <li><a href="#gallery" class="nav-link active">Gallery</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                {{custom_nav_items}}
+            </ul>
+            
+            {{search_controls}}
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="portfolio-main" id="gallery">
+        <div class="container">
+            <!-- Filter Controls -->
+            {{filter_controls}}
+
+            <!-- Portfolio Gallery -->
+            <div class="portfolio-gallery {{layout_class}}">
+                {{asset_cards}}
+            </div>
+
+            <!-- Load More Button -->
+            <div class="load-more-container" id="loadMoreContainer">
+                <button class="load-more-btn" onclick="loadMoreAssets()">Load More Assets</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <h2 class="section-title">About This Portfolio</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>This portfolio showcases a collection of AI-generated images created using FIBO Omni-Director Pro, an advanced image generation platform. Each asset represents the culmination of sophisticated prompting, parameter tuning, and creative direction.</p>
+                    
+                    <div class="portfolio-metrics">
+                        <div class="metric-item">
+                            <h4>Generation Process</h4>
+                            <p>Each image is crafted through an iterative process combining structured prompts, technical parameters, and creative vision to achieve optimal results.</p>
+                        </div>
+                        <div class="metric-item">
+                            <h4>Quality Standards</h4>
+                            <p>All assets undergo quality assessment and are selected based on composition, technical excellence, and creative merit.</p>
+                        </div>
+                        <div class="metric-item">
+                            <h4>Technical Specifications</h4>
+                            <p>High-resolution outputs with detailed metadata tracking for reproducibility and analysis.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-sidebar">
+                    <div class="tech-specs">
+                        <h4>Portfolio Statistics</h4>
+                        <ul>
+                            <li><strong>Total Assets:</strong> {{asset_count}}</li>
+                            <li><strong>Generated:</strong> {{creation_date}}</li>
+                            <li><strong>Platform:</strong> FIBO Omni-Director Pro</li>
+                            <li><strong>Export Format:</strong> Professional Portfolio</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    {{lightbox_html}}
+
+    <!-- Footer -->
+    <footer class="portfolio-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-branding">
+                    <h3>{{portfolio_title}}</h3>
+                    <p>{{footer_text}}</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Portfolio</h4>
+                    <ul>
+                        <li><a href="#gallery">View Gallery</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="portfolio.json" download>Download Metadata</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-tech">
+                    <h4>Powered By</h4>
+                    <p>FIBO Omni-Director Pro</p>
+                    <p class="tech-version">Advanced AI Image Generation</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 {{portfolio_title}}. Generated with FIBO Omni-Director Pro.</p>
+                <p class="generation-timestamp">Portfolio generated on {{generation_timestamp}}</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+    
+    <!-- Template Variables will be replaced during generation -->
+    <script>
+        // Portfolio configuration
+        window.portfolioConfig = {
+            title: "{{portfolio_title}}",
+            assetCount: {{asset_count}},
+            theme: "{{portfolio_theme}}",
+            layout: "{{layout_style}}",
+            enableLightbox: {{enable_lightbox}},
+            enableSearch: {{enable_search}},
+            enableFilters: {{enable_filters}}
+        };
+    </script>
+</body>
+</html>

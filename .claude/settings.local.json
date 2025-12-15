@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tree:*)",
+      "Bash(ls:*)",
+      "Bash(PYTHONPATH=backend pytest tests/backend/ --maxfail=5 --disable-warnings -v)",
+      "Bash(python -m ruff check:*)",
+      "Bash(python -m black:*)",
+      "Bash(python:*)",
+      "Bash(chmod:*)",
+      "WebFetch(domain:docs.bria.ai)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:fal.ai)",
+      "WebFetch(domain:huggingface.co)",
+      "Bash(PYTHONPATH=backend python:*)",
+      "Bash(rm:*)",
+      "Bash(cp:*)",
+      "Bash(pkill:*)",
+      "Bash(mkdir:*)",
+      "Bash(find:*)",
+      "Bash(mv:*)",
+      "Bash(true)",
+      "Bash(touch:*)",
+      "Bash(openssl req:*)",
+      "Bash(./scripts/production_setup.sh:*)",
+      "Bash(docker build:*)",
+      "Bash(PYTHONPATH=\"/Users/adariprasad/weapon/Omni - Director/backend\" python -c \"\nimport asyncio\nfrom app.main import health_check\nresult = asyncio.run(health_check())\nprint(''✅ Health endpoint test:'')\nfor key, value in result.items():\n    print(f''  {key}: {value}'')\n\")",
+      "Bash(git init:*)",
+      "Bash(git add:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

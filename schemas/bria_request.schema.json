@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Bria API Request",
+  "description": "Schema for Bria FIBO text-to-image API requests",
+  "type": "object",
+  "required": ["prompt"],
+  "additionalProperties": false,
+  "properties": {
+    "prompt": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1000,
+      "description": "Text description of the desired image"
+    },
+    "num_results": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4,
+      "default": 1,
+      "description": "Number of images to generate"
+    },
+    "aspect_ratio": {
+      "type": "string",
+      "enum": ["1:1", "2:3", "3:2", "3:4", "4:3", "4:5", "5:4", "9:16", "16:9"],
+      "default": "1:1",
+      "description": "Output image aspect ratio"
+    },
+    "sync": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to wait for results synchronously"
+    },
+    "seed": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2147483647,
+      "description": "Random seed for deterministic generation"
+    },
+    "prompt_enhancement": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to enhance the prompt automatically"
+    }
+  }
+}

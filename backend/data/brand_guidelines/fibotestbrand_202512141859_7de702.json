@@ -1,0 +1,130 @@
+{
+  "brand_name": "FIBO Test Brand",
+  "version": "1.0",
+  "colors": [
+    {
+      "name": "Primary Blue",
+      "hex_code": "#003366",
+      "rgb": [
+        0,
+        51,
+        102
+      ],
+      "usage": "primary",
+      "description": "Main brand color",
+      "accessibility_rating": "AA"
+    },
+    {
+      "name": "Secondary Gray",
+      "hex_code": "#6B7280",
+      "rgb": [
+        107,
+        114,
+        128
+      ],
+      "usage": "secondary",
+      "description": "Supporting color",
+      "accessibility_rating": "AA"
+    },
+    {
+      "name": "Accent Green",
+      "hex_code": "#10B981",
+      "rgb": [
+        16,
+        185,
+        129
+      ],
+      "usage": "accent",
+      "description": "Highlight color",
+      "accessibility_rating": "AA"
+    },
+    {
+      "name": "Neutral White",
+      "hex_code": "#FFFFFF",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "usage": "neutral",
+      "description": "Background color",
+      "accessibility_rating": "AA"
+    },
+    {
+      "name": "Text Dark",
+      "hex_code": "#1F2937",
+      "rgb": [
+        31,
+        41,
+        55
+      ],
+      "usage": "neutral",
+      "description": "Primary text color",
+      "accessibility_rating": "AA"
+    }
+  ],
+  "typography": [
+    {
+      "font_family": "Arial",
+      "font_size_range": [
+        24,
+        48
+      ],
+      "line_height_ratio": 1.2,
+      "letter_spacing": 0,
+      "usage": "heading",
+      "font_weight": "bold"
+    },
+    {
+      "font_family": "Arial",
+      "font_size_range": [
+        14,
+        18
+      ],
+      "line_height_ratio": 1.5,
+      "letter_spacing": 0,
+      "usage": "body",
+      "font_weight": "normal"
+    },
+    {
+      "font_family": "Arial",
+      "font_size_range": [
+        12,
+        14
+      ],
+      "line_height_ratio": 1.4,
+      "letter_spacing": 0.5,
+      "usage": "caption",
+      "font_weight": "light"
+    }
+  ],
+  "logo": null,
+  "style": {
+    "image_style": "corporate",
+    "contrast_requirements": {
+      "text": 4.5,
+      "background": 3.0
+    },
+    "saturation_range": [
+      0.1,
+      0.8
+    ],
+    "brightness_range": [
+      0.2,
+      0.9
+    ],
+    "aspect_ratios": [
+      "16:9",
+      "1:1",
+      "4:3"
+    ],
+    "prohibited_elements": [
+      "watermarks",
+      "text_overlays",
+      "borders"
+    ]
+  },
+  "custom_rules": {},
+  "created_at": "2025-12-14T23:59:28.268201",
+  "updated_at": "2025-12-14T23:59:28.268202"
+}
